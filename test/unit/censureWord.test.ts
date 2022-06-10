@@ -1,6 +1,6 @@
 import assert = require('assert');
 
-import Profanity from '../../src/index';
+import {Profanity} from '../../src';
 
 describe('censureWord tests', () => {
   it('should censure word', () => {

@@ -9,7 +9,7 @@ import console from 'console';
 /**
  * Profanity class.
  */
-class Profanity {
+export class Profanity {
   private phrase!: string;
   private originalText?: string;
   private config?: Configuration;
@@ -172,4 +172,4 @@ class Profanity {
   }
 }
 
-export = Profanity;
+
