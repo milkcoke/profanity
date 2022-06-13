@@ -7,4 +7,7 @@ export default interface IDictionary {
   'en-us': {
     words: string[];
   };
+  'ko': {
+    words: string[];
+  };
 }
