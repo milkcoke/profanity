@@ -125,13 +125,20 @@ export class Profanity {
       console.error('Unexpected error: wordlist is invalid.');
       return;
     }
+    switch (this.config?.language) {
+      case 'ko':
+        return this.wordlist.filter((word) => {
+          word = word.trim();
+          const regex = new RegExp(word, 'gi');
+          return !this.config?.excludeWords?.includes(word) && regex.test(value);
+        }).length !== 0;
+      default:
+        return this.wordlist.filter((word) => {
+          const regex = new RegExp(`\\b${word.replace(/(\W)/g, '\\$1')}\\b`, 'gi');
+          return !this.config?.excludeWords?.includes(word.toLowerCase()) && regex.test(value);
+        }).length !== 0;
+    }
 
-    return this.wordlist.filter((word) => {
-      const regex = new RegExp(`\\b${word.replace(/(\W)/g, '\\$1')}\\b`, 'gi');
-      return !this.config?.excludeWords?.includes(word.toLowerCase()) && regex.test(value);
-    }).length > 0
-      ? true
-      : false;
   }
 
   /**
