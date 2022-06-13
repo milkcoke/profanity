@@ -65,4 +65,15 @@ describe('censor tests', () => {
 
     assert.strictEqual(actual, spected);
   });
+
+  it('should consider wordsList configuration to replace words 2', ()=>{
+    const profanity = new Profanity('말미잘 바보 멍청이', {
+      language: 'ko',
+      wordsList: ['바보', '똥게']
+    });
+    const actual = "말미잘 ** 멍청이";
+    const spected = profanity.censor();
+
+    assert.strictEqual(actual, spected);
+  });
 });
